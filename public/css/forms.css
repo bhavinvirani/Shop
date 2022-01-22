@@ -1,0 +1,43 @@
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control input,
+.form-control textarea {
+  border: 1px solid #a1a1a1;
+  font: inherit;
+  border-radius: 2px;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline-color: #00695c;
+}
+
+.user__message {
+  margin: auto;
+  width: 90%;
+  padding: 0.5rem;
+  border: 2px solid #093833;
+  background-color: #00a592;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.user-message--error {
+  border-color: rgb(255, 166, 0);
+  background-color: rgb(243, 175, 74);
+  color: white;
+}
+.form-control input.invalid,
+.form-control textarea.invalid {
+  border-color: rgb(255, 16, 16);
+}

@@ -1,0 +1,23 @@
+<section class="pagination">
+    <!-- Whene page is not 1 and previos page is not 1 then show first page -->
+    <% if(currentPage != 1 && previousPage != 1) { %>
+        <a href="?page=1">1</a>
+    <% } %>
+    <!-- show previousPage (not render whene page is 1) -->
+    <% if(hasPreviosPage) { %>
+        <a href="?page=<%= previousPage %>" > <%= previousPage %> </a>
+    <% } %>
+    <!-- always render currentPage page -->
+    <a href="?page=<%= currentPage %>" class="active"> <%= currentPage %> </a>
+
+    <!-- show nextPage -->
+    <% if(hasNextPage) { %>
+        <a href="?page=<%= nextPage %>" > <%= nextPage %> </a>
+    <% } %>
+
+    <!-- show last page -->
+    <% if(lastPage != currentPage && nextPage != lastPage) { %>
+    <a href="?page=<%= lastPage %>" >Last Page</a>
+    <% } %>
+
+</section>

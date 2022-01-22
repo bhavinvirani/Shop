@@ -1,0 +1,40 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/orders.css">
+
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <main>
+                <% if (orders.length > 0) { %>
+                    <ul class="orders">
+                        <% orders.forEach(order => { %>
+                            <li class="orders__item">
+                                <div class="order__header">
+                                    <h1># <%= order._id %></h1>
+                                    <h1><%= order.createdAt %></h1>
+                                </div>
+                                <ul class="orders__products">
+                                    <% order.products.forEach(prod=> { %>
+                                        <li class="orders__products-item">
+                                            <%= prod.product.title %> (<%= prod.quantity %>)
+                                        </li>
+                                        <% }); %>
+                                    </ul>
+                                    <div class="order__footer">
+                                        <h3>Total Amount: <%= order.total_amount %> </h3>
+                                        <h4> <a href="/orders/<%= order._id %>"> Invoice </a></h4>
+                                    </div>
+
+                                </li>
+                                <% }); %>
+                            </ul>
+                            <% } else { %>
+                                <div class="cart__svg__div">
+                                    <h1> No Orders Yet ☹ </h1>
+                                    <h2> Look's like you have't made your menu yet </h2>
+                                    <img class="svg" src="/image/shopping_app.svg" alt="Empty_Cart">
+                                </div>
+                            <% } %>
+            </main>
+            <%- include('../includes/end.ejs') %>
