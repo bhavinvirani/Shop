@@ -184,6 +184,8 @@ exports.postEditProduct = (req, res, next) => {
 
 // /admin/delete-product  => POST
 exports.deleteProduct = (req, res, next) => {
+  console.log("deleted")
+  
   const prodId = req.params.productId;
   Product.findById(prodId).then((product) => {
     if(!product) {

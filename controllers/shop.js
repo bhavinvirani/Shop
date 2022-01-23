@@ -287,11 +287,7 @@ exports.getCheckout = (req, res, next) => {
         cancel_url: req.protocol + '://' + req.get('host') + '/checkout/cancel'
     });
 
-      // return {
-      //   products: products,
-      //   total: total,
-      //   session: session
-      // };
+      
     })
     .then(session => {
       res.render("shop/checkout", {

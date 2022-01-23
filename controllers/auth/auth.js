@@ -67,13 +67,13 @@ exports.postLogin = (req, res, next) => {
   User.findOne({ email: email })
     .then((user) => {
       if (!user) {
-        //? id user not found n DB
+        //? id user not found in DB
         // req.flash('error', 'Invalid Email or Password');    //? flash add filed in next req object
         return res.status(422).render("auth/login", {
           path: "/login",
           pageTitle: "Login",
           errorMessage: "User not found please Signup",
-          oldInput: { email: "    " },
+          oldInput: { email: "" },
           validationErrors: [],
         });
       }

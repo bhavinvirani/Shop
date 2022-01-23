@@ -6,7 +6,7 @@
         <%- include('../includes/navigation.ejs') %>
             <main>
                 <ul class="cart__item-list">
-                    <% products.forEach(prod=> { %>
+                <% products.forEach(prod=> { %>
                         <li class="cart__item">
                             <h1>
                                 <%= prod.productId.title %>
@@ -14,7 +14,7 @@
                             <h2>Quantity: <%= prod.quantity %>
                             </h2>
                         </li>
-                        <% }) %>
+                <% }) %>
                 </ul>
                 <div class="btn-centered">
                     <h2>Total: $<%= total %>

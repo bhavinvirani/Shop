@@ -1,4 +1,5 @@
-const deleteProduct = (btn) => {
+const btn = document.getElementById("deleteAdminProdect");
+const deleteProduct = () => {
     const prodId =  btn.parentNode.querySelector('[name=productId]').value;
     const csrf =  btn.parentNode.querySelector('[name=_csrf]').value;
 
@@ -11,14 +12,14 @@ const deleteProduct = (btn) => {
             'csrf-token': csrf          //* set csrf token to heder
         }
     }).then((result) => {
-        console.log(result.json())
         return result.json();           //* return json data which
     })
     .then(data => {
         console.log(data);
-        // productElement.remove();           //* new browsers
-        productElement.parentNode.removeChild(productElement);        //* for all browsers
+        productElement.remove(productElement);           //* new browsers
+        // productElement.parentNode.removeChild(productElement);        //* for all browsers
 
     })
     .catch(err => console.log(err))
 };
+btn.addEventListener("click", deleteProduct)

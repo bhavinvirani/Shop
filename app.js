@@ -7,9 +7,13 @@ const https = require("https");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
+//* session
+/*  Take instance of "express-session module" to connect then 
+    return MongoDBStore "Class" latter on that can be use of store session */
 const session = require("express-session"); //? create sessions
-// Take instance of "express-session module" to connect then return MongoDBStore "Class" latter on that can be use of store session
 const MongoDBStore = require("connect-mongodb-session")(session); //? session store   //? store sessions at database
+
 const csrf = require("csurf"); //? for prevent csrf atteck
 const flash = require("connect-flash");
 const multer = require("multer");
@@ -90,13 +94,14 @@ app.use(
 
 app.use(express.static("public"));
 app.use("/images", express.static("images"));
-//? cofigur session
+
+//? cofigur / initalize session
 app.use(
   session({
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    store: store, //? where to satore
+    store: store, //? where to store
     cookie: {},
   })
 );
@@ -134,6 +139,7 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
+//* if req came here the it is definitely an error
 app.get("/500", errorController.get500);
 app.use(errorController.get404);
 
@@ -147,6 +153,7 @@ app.use((error, req, res, next) => {
   });
 });
 
+// connection
 mongoose
   .connect(MONGODB_URI, {
     useNewUrlParser: true,
